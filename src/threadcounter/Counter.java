@@ -19,14 +19,14 @@ public class Counter implements Runnable{
         while(true)
         {
             try {
-                ThreadCounter.semaphore.acquire();
+                ThreadCounter.semaphoreB.acquire();
+                ThreadCounter.count++;
             } catch (InterruptedException ex) {
                 Logger.getLogger(Counter.class.getName()).log(Level.SEVERE, null, ex);
             }
-            ThreadCounter.count++;
-            ThreadCounter.semaphore.release();
+            ThreadCounter.semaphoreA.release();
         }
     }
     
-    
+   
 }
