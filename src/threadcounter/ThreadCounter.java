@@ -15,15 +15,15 @@ public class ThreadCounter {
      * @param args the command line arguments
      */
     
-    public int count=0;
+    public static int count=0;
     public static void main(String[] args) 
     {
         Thread Counter=new Thread(new Counter());
-        Thread Printer=new Thread(new Printer());
+        //Thread Printer=new Thread(new Printer());
         
         
         Counter.start();
-        Printer.start();
+        //Printer.start();
     }
     
 }
