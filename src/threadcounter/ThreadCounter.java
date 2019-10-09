@@ -14,8 +14,16 @@ public class ThreadCounter {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    
+    public int count=0;
+    public static void main(String[] args) 
+    {
+        Thread Counter=new Thread(new Counter());
+        Thread Printer=new Thread(new Printer());
+        
+        
+        Counter.start();
+        Printer.start();
     }
     
 }
