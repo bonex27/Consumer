@@ -5,6 +5,9 @@
  */
 package threadcounter;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author informatica
@@ -14,7 +17,13 @@ public class Printer implements Runnable{
     @Override
     public void run() {
         while(true) {
+            try {
+                ThreadCounter.c.acquire();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Printer.class.getName()).log(Level.SEVERE, null, ex);
+            }
             System.out.println("La varibile è: "+ThreadCounter.count);
+            ThreadCounter.c.release();
         }
     }
     
