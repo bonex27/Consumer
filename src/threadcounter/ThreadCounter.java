@@ -5,6 +5,8 @@
  */
 package threadcounter;
 
+import java.util.concurrent.Semaphore;
+
 /**
  *
  * @author informatica
@@ -16,12 +18,13 @@ public class ThreadCounter {
      */
     
     public static int count=0;
+    static Semaphore c=new Semaphore(1);
     public static void main(String[] args) 
     {
-        Thread Counter=new Thread(new Counter());
-        Thread Printer=new Thread(new Printer());
-        Counter.start();
-        Printer.start();
+        Thread counter=new Thread(new Counter());
+        Thread printer=new Thread(new Printer());
+        counter.start();
+        printer.start();
         
     }
     
