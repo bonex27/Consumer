@@ -5,6 +5,9 @@
  */
 package threadcounter;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author informatica
@@ -13,13 +16,17 @@ public class Counter implements Runnable{
 
     @Override
     public void run() {
-        this.write();
-        
-    }
-    public void  write()
-    {
         while(true)
+        {
+            try {
+                ThreadCounter.semaphore.acquire();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Counter.class.getName()).log(Level.SEVERE, null, ex);
+            }
             ThreadCounter.count++;
+            ThreadCounter.semaphore.release();
+        }
     }
+    
     
 }

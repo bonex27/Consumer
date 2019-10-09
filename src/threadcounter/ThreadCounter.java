@@ -18,7 +18,7 @@ public class ThreadCounter {
      */
     
     public static int count=0;
-    static Semaphore c=new Semaphore(1);
+    static Semaphore semaphore=new Semaphore(1);
     public static void main(String[] args) 
     {
         Thread counter=new Thread(new Counter());
